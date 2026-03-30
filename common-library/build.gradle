@@ -1,0 +1,10 @@
+dependencies {
+    // We only need Lombok and Jackson (for JSON) here
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+}
+
+// Since this is a library, we don't need a main class
+bootJar { enabled = false }
+jar { enabled = true }

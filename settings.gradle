@@ -1,0 +1,4 @@
+rootProject.name = 'kafka-microservices-practice'
+include 'order-service'
+include 'inventory-service'
+include 'common-library'
