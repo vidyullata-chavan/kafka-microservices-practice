@@ -5,18 +5,18 @@ plugins {
 }
 
 // This prevents the root project from looking for a main class
-bootJar {
-    enabled = false
-}
+//bootJar {
+//    enabled = false
+//}
 
 // Optional: Also disable the executable runner for the root
-jar {
-    enabled = true
-}
-
-repositories {
-    mavenCentral()
-}
+//jar {
+//    enabled = true
+//}
+//
+//repositories {
+//    mavenCentral()
+//}
 
 subprojects {
     apply plugin: 'java'
@@ -24,9 +24,9 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
 
     // FIX 2: Enable bootJar for the actual microservices
-    bootJar {
-        enabled = true
-    }
+//    bootJar {
+//        enabled = true
+//    }
 
     group = 'com.vidyu'
     version = '1.0-SNAPSHOT'

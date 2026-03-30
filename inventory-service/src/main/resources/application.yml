@@ -1,1 +1,19 @@
-server.port: 8082
+server:
+  port: 8082
+
+spring:
+  application:
+    name: inventory-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: inventory-group-v3 # Incrementing to skip the "poison pill"
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        # 1. Trust the package
+        spring.json.trusted.packages: "com.vidyu.base.dto"
+        # 2. Tell the consumer that "orderEvent" means THIS class
+        spring.json.type.mapping: "orderEvent:com.vidyu.base.dto.OrderEvent"
